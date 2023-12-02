@@ -1,8 +1,5 @@
-import re
-
 with open("input.txt", 'r') as rf:
     entries = rf.readlines()
-
 
 sum_of_entries = 0
 
@@ -21,6 +18,7 @@ spelling_digit_map = {
 
 entries = [[*(e.rstrip())] for e in entries]
 
+#For Part 2
 for e in entries:
     #print("Before substitution:", ''.join(e))
     for pos in range(len(e)-2):
@@ -28,6 +26,7 @@ for e in entries:
             if (substring := "".join(e[pos:pos+i])) in spelling_digit_map.keys():
                 e[pos] = spelling_digit_map[substring]         
 
+# Part 1 only solution
 for e in entries:
     tenths_place = 0
     ones_place = 0
