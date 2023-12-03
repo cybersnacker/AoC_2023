@@ -6,9 +6,7 @@ with open('2023-12-03/input.txt', 'r') as rf:
 
 #Not-symbol_list, since we don't know the exhaustive list of symbols
 not_symbols = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']
-# symbol_list = ['~', '`', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '-', '+', '='
-#                '{', '}', '[', ']', ':', ';', '"', "'", '<', '>', ',', '?', '/']
-star_symbol = ['*']
+
 
 # Create a 2D character array so we can slice and find neighboring characters
 entries_array = [[*(e.rstrip())] for e in entries]
