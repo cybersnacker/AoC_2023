@@ -31,18 +31,18 @@ def has_neighboring_symbol(i, j, arr):
 sum_of_part_nums = 0
 # To track contiguous numbers across lines, initialize before loop. 
 # Couldn't decipher or assume from description
-track_number = []
+track_number = 0
 symbol_neighbor = False
 for i, e in enumerate(entries_array):
     for j, c in enumerate(e):
         if c.isdigit():
-          track_number.append(c)
+          track_number = 10*track_number + int(c)
           symbol_neighbor |= has_neighboring_symbol(i=i, j=j,arr=entries_array)
         else:
             if symbol_neighbor:
-                sum_of_part_nums += int(''.join(track_number))
+                sum_of_part_nums += track_number
             # Reset to track new number and neighbor
-            track_number = []
+            track_number = 0
             symbol_neighbor = False
 
 print("Sum of part numbers is: ", sum_of_part_nums)

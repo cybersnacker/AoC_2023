@@ -37,23 +37,23 @@ sum_of_gear_ratios = 0
 gear_map = dict()
 # To track contiguous numbers across lines, initialize before loop. 
 # Couldn't decipher or assume from description
-track_number = []
+track_number = 0
 star_positions = []
 symbol_neighbor = False
 for i, e in enumerate(entries_array):
     for j, c in enumerate(e):
         if c.isdigit():
               # Track the number and see if there is a star in the neighborhood
-              track_number.append(c)
+              track_number = 10*track_number + int(c)
               star_positions+= get_star_neighboring_pos(i=i, j=j, arr=entries_array)
         else:
             # Start processing the numbers when a non-number is encountered
             for pos in set(star_positions):
                 if pos in gear_map:
-                    gear_map[pos].append(int(''.join(track_number)))
+                    gear_map[pos].append(track_number)
                 else:
-                    gear_map[pos] = [int(''.join(track_number))]
-            track_number = []
+                    gear_map[pos] = [track_number]
+            track_number = 0
             star_positions = []
 
 for k, v in gear_map.items():
