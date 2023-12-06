@@ -104,29 +104,3 @@ if __name__ == '__main__':
         locs.append(loc_num)
     print("Closest location: ", min(locs))
 
-
-
-    # interesting_seeds = []
-    # for i in range(0, len(seeds), 2):
-    #     interesting_seeds += [seeds[i], (seeds[i]+seeds[i+1]-1)]
-    # #print(interesting_seeds)
-        
-    # for v in map_dict['seed-to-soil']:
-    #     interesting_seeds += [v[1], (v[1]+v[2]-1)]
-    # print(interesting_seeds)
-
-    # interesting_soils = []
-    # for v in map_dict['seed-to-soil']:
-    #     interesting_soils += [v[0], (v[0]+v[2]-1)]
-
-    # for v in map_dict['seed-to-soil']:
-    #     interesting_soils += [v[1], (v[1]+v[2]-1)]
-
-    # for soil in interesting_soils:
-    #     candidate_seed = inverse_corresponding_number(map_dict['seed-to-soil'], soil)
-    #     if check_valid_seed(seeds,candidate_seed):
-    #         interesting_seeds.append(candidate_seed)
-
-    # print(interesting_seeds)
-    
-    
