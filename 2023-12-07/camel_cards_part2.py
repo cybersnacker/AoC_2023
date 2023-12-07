@@ -39,31 +39,43 @@ def categorize_hands(hand, hand_type_map):
     counts = Counter(hand)
     # Find new category if there is a J
     if 'J' in counts.keys():
-        key, val = counts.most_common()[0]
-        if key != 'J':
-            counts.update({key:counts['J']})
-            del counts['J']
-        #print(counts)
-    # No change if there is no J
-    count_val = counts.values()
-    if set(count_val) == set([5]):
-        hand_type_map['5OK'].append(hand)
-    elif set(count_val) == set([4, 1]):
-        hand_type_map['4OK'].append(hand)
-    elif set(count_val) == set([3, 2]):
-        hand_type_map['FH'].append(hand)
-    elif set(count_val) == set([3, 1]):
-        hand_type_map['3OK'].append(hand)
-    elif sorted(count_val) == [1,2,2]:
-        hand_type_map['2P'].append(hand)
-    elif 2 in set(count_val):
-        hand_type_map['1P'].append(hand)
+        count_val = counts.values()
+        if len(count_val) == 2 or len(count_val) == 1:
+            hand_type_map['5OK'].append(hand)
+        elif sorted(count_val) == [1,2,2]:
+            if counts['J'] == 2:
+                hand_type_map['4OK'].append(hand)
+            else:
+                hand_type_map['FH'].append(hand)
+        elif sorted(count_val) == [1,1,3]:
+            hand_type_map['4OK'].append(hand)
+        elif sorted(count_val) == [1,1,1,2]:
+            hand_type_map['3OK'].append(hand)
+        elif len(count_val) == 5:
+            hand_type_map['1P'].append(hand)
+        else:
+            hand_type_map['2P'].append(hand)
     else:
-        hand_type_map['HC'].append(hand)
+    # No change if there is no J
+        count_val = counts.values()
+        if set(count_val) == set([5]):
+            hand_type_map['5OK'].append(hand)
+        elif set(count_val) == set([4, 1]):
+            hand_type_map['4OK'].append(hand)
+        elif set(count_val) == set([3, 2]):
+            hand_type_map['FH'].append(hand)
+        elif set(count_val) == set([3, 1]):
+            hand_type_map['3OK'].append(hand)
+        elif sorted(count_val) == [1,2,2]:
+            hand_type_map['2P'].append(hand)
+        elif 2 in set(count_val):
+            hand_type_map['1P'].append(hand)
+        else:
+            hand_type_map['HC'].append(hand)
     
 
 if __name__ == '__main__':
-    entries_map = parse_input('2023-12-07/test_cases.txt')
+    entries_map = parse_input('2023-12-07/input.txt')
 
     hand_type_map = {
         "HC": [],
@@ -89,9 +101,9 @@ if __name__ == '__main__':
 
     # print(hand_type_map['HC'])
     
-    # print(lol)
-    # for multiplier, hand in enumerate(lol, start=1):
-    #     winnings += int(entries_map[hand]) * multiplier
+    print(lol)
+    for multiplier, hand in enumerate(lol, start=1):
+        winnings += int(entries_map[hand]) * multiplier
 
-    # print(winnings)
+    print(winnings)
         
